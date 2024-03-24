@@ -1,4 +1,14 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿
+
+
+/*
+ OWNER : RAJESHWAR L
+ GITHUB:https://github.com/Rajesh-laxman/HCL_API_MAC
+ MAC   :/Users/rajeshwarl/Desktop/RL_FILES/csharpProject/HCL_TECH_WEB-API/CLONED HCL_API/HCL_API_MAC/HCL_API
+ */
+try { }
+catch { }
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
