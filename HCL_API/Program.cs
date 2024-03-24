@@ -1,25 +1,36 @@
-﻿
+﻿/* OWNER : RAJESHWAR L
+   GITHUB: https://github.com/Rajesh-laxman/HCL_API_MAC
+   MAC   : /Users/rajeshwarl/Desktop/RL_FILES/csharpProject/HCL_TECH_WEB-API/CLONED HCL_API/HCL_API_MAC/HCL_API */
 
 
-/*
- OWNER : RAJESHWAR L
- GITHUB:https://github.com/Rajesh-laxman/HCL_API_MAC
- MAC   :/Users/rajeshwarl/Desktop/RL_FILES/csharpProject/HCL_TECH_WEB-API/CLONED HCL_API/HCL_API_MAC/HCL_API
- */
-try { }
-catch { }
+using HCL_API.DB_CONTEXT;
+using Microsoft.EntityFrameworkCore;
+
+/* START_UP_CLASS */
 var builder = WebApplication.CreateBuilder(args);
+/* var builder_old = WebApplication.CreateBuilder(args).Build(); old version  */
 
+/* configure services */
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+/*DB_CONTEXT*/
+/* 4.2.ADD dbcontext in configure serive */
+builder.Services.AddDbContext<HCL_DB_Context>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("HCL_API_CONECTION_STRING")));
+/* 5.ADD Migrations */
+/* 6.ADD CONTROLLERS */
 
+
+
+
+var app = builder.Build();   //insatance of this webapplication
+
+/* configure method */
 // Configure the HTTP request pipeline.
+
+//exception handling
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -27,10 +38,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();
-

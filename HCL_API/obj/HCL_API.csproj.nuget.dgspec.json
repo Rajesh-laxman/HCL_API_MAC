@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/rajeshwarl/Desktop/RL_FILES/csharpProject/HCL_TECH_WEB-API/CLONED HCL_API/HCL_API_MAC/HCL_API/HCL_API.csproj": {}
+    "/Users/rajeshwarl/Desktop/RL_FILES/csharpProject/HCL_TECH_WEB-API/CLONED_HCL_API/HCL_API_MAC/HCL_API/HCL_API.csproj": {}
   },
   "projects": {
-    "/Users/rajeshwarl/Desktop/RL_FILES/csharpProject/HCL_TECH_WEB-API/CLONED HCL_API/HCL_API_MAC/HCL_API/HCL_API.csproj": {
+    "/Users/rajeshwarl/Desktop/RL_FILES/csharpProject/HCL_TECH_WEB-API/CLONED_HCL_API/HCL_API_MAC/HCL_API/HCL_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/rajeshwarl/Desktop/RL_FILES/csharpProject/HCL_TECH_WEB-API/CLONED HCL_API/HCL_API_MAC/HCL_API/HCL_API.csproj",
+        "projectUniqueName": "/Users/rajeshwarl/Desktop/RL_FILES/csharpProject/HCL_TECH_WEB-API/CLONED_HCL_API/HCL_API_MAC/HCL_API/HCL_API.csproj",
         "projectName": "HCL_API",
-        "projectPath": "/Users/rajeshwarl/Desktop/RL_FILES/csharpProject/HCL_TECH_WEB-API/CLONED HCL_API/HCL_API_MAC/HCL_API/HCL_API.csproj",
+        "projectPath": "/Users/rajeshwarl/Desktop/RL_FILES/csharpProject/HCL_TECH_WEB-API/CLONED_HCL_API/HCL_API_MAC/HCL_API/HCL_API.csproj",
         "packagesPath": "/Users/rajeshwarl/.nuget/packages/",
-        "outputPath": "/Users/rajeshwarl/Desktop/RL_FILES/csharpProject/HCL_TECH_WEB-API/CLONED HCL_API/HCL_API_MAC/HCL_API/obj/",
+        "outputPath": "/Users/rajeshwarl/Desktop/RL_FILES/csharpProject/HCL_TECH_WEB-API/CLONED_HCL_API/HCL_API_MAC/HCL_API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/rajeshwarl/.nuget/NuGet/NuGet.Config"
@@ -41,6 +41,26 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.17, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

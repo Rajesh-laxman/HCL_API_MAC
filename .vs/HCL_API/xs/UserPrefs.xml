@@ -1,4 +1,34 @@
 ﻿<Properties StartupConfiguration="{1330C2DA-802E-4032-BB27-D2B9441E739D}|https" GitUserInfo="UsingMD">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.HCL__API PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="HCL_API/Program.cs">
+    <Files>
+      <File FileName="HCL_API/Program.cs" Line="14" Column="35" />
+      <File FileName="HCL_API/appsettings.json" Line="15" Column="1" />
+      <File FileName="HCL_API/HCL_DB_Context.cs" Line="17" Column="1" />
+      <File FileName="HCL_API/MODEL/EMPLOYEE.cs" Line="1" Column="1" />
+      <File FileName="HCL_API/WeatherForecast.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="HCL_API" expanded="True">
+            <Node name="HCL_API">
+              <Node name="Dependencies" expanded="True">
+                <Node name="FrameworkReferences" expanded="True" />
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="MODEL" expanded="True" />
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
 </Properties>
