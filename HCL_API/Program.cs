@@ -4,6 +4,7 @@
 
 
 using HCL_API.DB_CONTEXT;
+using HCL_API.MAPPINGS;
 using HCL_API.REPOSITORIES;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,7 +25,8 @@ builder.Services.AddDbContext<HCL_DB_Context>(options => options.UseSqlServer(bu
 /* 6.ADD CONTROLLERS */
 
 builder.Services.AddScoped<IRegionRepository, Sql_Region_Repository>();
-
+//builder.Services.AddScoped<IRegionRepository, mango_db_repository>();
+builder.Services.AddAutoMapper(typeof(AUTO_MAPPER));
 
 
 var app = builder.Build();   //insatance of this webapplication

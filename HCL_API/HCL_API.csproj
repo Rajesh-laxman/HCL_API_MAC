@@ -21,16 +21,20 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.17" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="MODEL\" />
     <None Remove="MODEL\DTO\" />
     <None Remove="REPOSITORIES\" />
+    <None Remove="MAPPINGS\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MODEL\" />
     <Folder Include="MODEL\DTO\" />
     <Folder Include="REPOSITORIES\" />
+    <Folder Include="MAPPINGS\" />
   </ItemGroup>
 </Project>

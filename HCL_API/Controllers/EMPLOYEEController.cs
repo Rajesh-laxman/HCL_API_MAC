@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using HCL_API.DB_CONTEXT;
 using HCL_API.MODEL;
 using HCL_API.MODEL.DTO;
@@ -19,10 +20,12 @@ namespace HCL_API.Controllers
     {
         //private readonly HCL_DB_Context hCL_DB_Context;
         private readonly IRegionRepository regionRepository;
-        public EMPLOYEEController(IRegionRepository regionRepository)
+        private readonly IMapper mapper;
+        public EMPLOYEEController(IRegionRepository regionRepository,IMapper mapper)
         {
            // this.hCL_DB_Context = hCL_DB_Context;
             this.regionRepository = regionRepository;
+            this.mapper = mapper;
         }
 
         [HttpGet]
@@ -33,18 +36,20 @@ namespace HCL_API.Controllers
             // var emp_DOMAIN_list =await hCL_DB_Context.Emp_db_set.ToListAsync();
             var emp_DOMAIN_list = await regionRepository.Get_all_async();
 
-            List<EMP_DTO> eMP_DTO_list = new List<EMP_DTO> { };
-            foreach(var x in emp_DOMAIN_list)
-            {
-                eMP_DTO_list.Add(new EMP_DTO()
-                {
-                    E_ID = x.E_ID,
-                    E_Name = x.E_Name,
-                    E_City = x.E_City,
-                    E_Design = x.E_Design
-                });
+            List<EMP_DTO> eMP_DTO_list  = mapper.Map<List<EMP_DTO>>(emp_DOMAIN_list);
 
-            }
+           // List<EMP_DTO> eMP_DTO_list = new List<EMP_DTO> { };
+            //foreach(var x in emp_DOMAIN_list)
+            //{
+            //    eMP_DTO_list.Add(new EMP_DTO()
+            //    {
+            //        E_ID = x.E_ID,
+            //        E_Name = x.E_Name,
+            //        E_City = x.E_City,
+            //        E_Design = x.E_Design
+            //    });
+
+            //}
             return Ok(eMP_DTO_list);
         }
 
@@ -60,13 +65,17 @@ namespace HCL_API.Controllers
             {
                 return NotFound($"THIS ID [{ID}] IS NOT AVAILABLE IN DATA BASE.");
             }
-            EMP_DTO eMP_DTO = new EMP_DTO()
-            {
-                E_ID = emp_domain_detail.E_ID,
-                E_City = emp_domain_detail.E_City,
-                E_Design = emp_domain_detail.E_Design,
-                E_Name = emp_domain_detail.E_Name
-            };
+
+
+            EMP_DTO eMP_DTO = mapper.Map<EMP_DTO>(emp_domain_detail);
+
+            //EMP_DTO eMP_DTO = new EMP_DTO()
+            //{
+            //    E_ID = emp_domain_detail.E_ID,
+            //    E_City = emp_domain_detail.E_City,
+            //    E_Design = emp_domain_detail.E_Design,
+            //    E_Name = emp_domain_detail.E_Name
+            //};
 
 
             return Ok(eMP_DTO);
@@ -77,18 +86,21 @@ namespace HCL_API.Controllers
         /*https://localhost:7196/api/EMPLOYEE/Insert_an_employee */
         public async Task<IActionResult> create_an_emp([FromBody] EMP_DTO e)
         {
-            EMPLOYEE eMPLOYEE = new EMPLOYEE()
-            {
-                E_Name = e.E_Name,
-                E_Design = e.E_Design,
-                E_City = e.E_City
-            };
+            //EMPLOYEE eMPLOYEE = new EMPLOYEE()
+            //{
+            //    E_Name = e.E_Name,
+            //    E_Design = e.E_Design,
+            //    E_City = e.E_City
+            //};
+
+            EMPLOYEE eMPLOYEE = mapper.Map<EMPLOYEE>(e);
 
             var emp = await regionRepository.Add_an_emp_async(eMPLOYEE);
 
-           // await hCL_DB_Context.Emp_db_set.AddAsync(eMPLOYEE);
+            // await hCL_DB_Context.Emp_db_set.AddAsync(eMPLOYEE);
             //await hCL_DB_Context.SaveChangesAsync();
-            return Ok(emp);
+            EMP_DTO eMP_DTO = mapper.Map<EMP_DTO>(emp);
+            return Ok(eMP_DTO);
         }
 
         [HttpPut]
@@ -96,19 +108,20 @@ namespace HCL_API.Controllers
         /*https://localhost:7196/api/EMPLOYEE/Update_an_employee  */
         public async Task<IActionResult> update_an_emp([FromBody] EMP_DTO e)
         {
-            EMPLOYEE eMPLOYEE = new EMPLOYEE
-            {
-                E_ID = e.E_ID,
-                E_City = e.E_City,
-                E_Design = e.E_Design,
-                E_Name = e.E_Name
-            };
+            //EMPLOYEE eMPLOYEE = new EMPLOYEE
+            //{
+            //    E_ID = e.E_ID,
+            //    E_City = e.E_City,
+            //    E_Design = e.E_Design,
+            //    E_Name = e.E_Name
+            //};
 
-
+            EMPLOYEE eMPLOYEE = mapper.Map<EMPLOYEE>(e);
             var emp = await regionRepository.Update_an_emp_async(eMPLOYEE);
             // hCL_DB_Context.Emp_db_set.Update(eMPLOYEE);
-           // await hCL_DB_Context.SaveChangesAsync();
-            return Ok(emp);
+            // await hCL_DB_Context.SaveChangesAsync();
+            EMP_DTO eMP_DTO = mapper.Map<EMP_DTO>(emp);
+            return Ok(eMP_DTO);
         }
 
         [HttpDelete]
@@ -128,8 +141,10 @@ namespace HCL_API.Controllers
             //await hCL_DB_Context.SaveChangesAsync();
 
 
-//create automapper to convert domain model to dtos then pass this dtos
-            return Ok(emp);
+            //create automapper to convert domain model to dtos then pass this dtos
+
+            EMP_DTO eMP_DTO = mapper.Map<EMP_DTO>(emp);
+            return Ok(eMP_DTO);
         }
 
 
