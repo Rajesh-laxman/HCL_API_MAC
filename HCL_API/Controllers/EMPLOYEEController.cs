@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using HCL_API.DB_CONTEXT;
 using HCL_API.MODEL;
 using HCL_API.MODEL.DTO;
+using HCL_API.REPOSITORIES;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,10 +17,12 @@ namespace HCL_API.Controllers
     [ApiController]
     public class EMPLOYEEController : ControllerBase
     {
-        private readonly HCL_DB_Context hCL_DB_Context;
-        public EMPLOYEEController(HCL_DB_Context hCL_DB_Context)
+        //private readonly HCL_DB_Context hCL_DB_Context;
+        private readonly IRegionRepository regionRepository;
+        public EMPLOYEEController(IRegionRepository regionRepository)
         {
-            this.hCL_DB_Context = hCL_DB_Context;
+           // this.hCL_DB_Context = hCL_DB_Context;
+            this.regionRepository = regionRepository;
         }
 
         [HttpGet]
@@ -27,7 +30,8 @@ namespace HCL_API.Controllers
         /*https://localhost:7196/api/EMPLOYEE/Print_all_employees */
         public async Task<IActionResult> get_all_emp()
         {
-            var emp_DOMAIN_list =await hCL_DB_Context.Emp_db_set.ToListAsync();
+            // var emp_DOMAIN_list =await hCL_DB_Context.Emp_db_set.ToListAsync();
+            var emp_DOMAIN_list = await regionRepository.Get_all_async();
 
             List<EMP_DTO> eMP_DTO_list = new List<EMP_DTO> { };
             foreach(var x in emp_DOMAIN_list)
@@ -50,7 +54,8 @@ namespace HCL_API.Controllers
         /*https://localhost:7196/api/EMPLOYEE/Print_employee_by_ID?ID=2 */
         public async Task<IActionResult> get_emp_by_id (int ID)
         {
-            var emp_domain_detail = await hCL_DB_Context.Emp_db_set.FirstOrDefaultAsync(x => x.E_ID == ID);
+            //var emp_domain_detail = await hCL_DB_Context.Emp_db_set.FirstOrDefaultAsync(x => x.E_ID == ID);
+            var emp_domain_detail =await  regionRepository.Get_emp_by_id_async(ID);
             if(emp_domain_detail == null)
             {
                 return NotFound($"THIS ID [{ID}] IS NOT AVAILABLE IN DATA BASE.");
@@ -79,9 +84,11 @@ namespace HCL_API.Controllers
                 E_City = e.E_City
             };
 
-            await hCL_DB_Context.Emp_db_set.AddAsync(eMPLOYEE);
-            await hCL_DB_Context.SaveChangesAsync();
-            return Ok(eMPLOYEE);
+            var emp = await regionRepository.Add_an_emp_async(eMPLOYEE);
+
+           // await hCL_DB_Context.Emp_db_set.AddAsync(eMPLOYEE);
+            //await hCL_DB_Context.SaveChangesAsync();
+            return Ok(emp);
         }
 
         [HttpPut]
@@ -97,9 +104,11 @@ namespace HCL_API.Controllers
                 E_Name = e.E_Name
             };
 
-             hCL_DB_Context.Emp_db_set.Update(eMPLOYEE);
-            await hCL_DB_Context.SaveChangesAsync();
-            return Ok(eMPLOYEE);
+
+            var emp = await regionRepository.Update_an_emp_async(eMPLOYEE);
+            // hCL_DB_Context.Emp_db_set.Update(eMPLOYEE);
+           // await hCL_DB_Context.SaveChangesAsync();
+            return Ok(emp);
         }
 
         [HttpDelete]
@@ -107,17 +116,20 @@ namespace HCL_API.Controllers
         /* https://localhost:7196/api/EMPLOYEE/Delete_an_employee/10 */
         public async Task<IActionResult> delete_an_emp([FromRoute] int ID)
         {
-            var emp_details = hCL_DB_Context.Emp_db_set.FirstOrDefault(x => x.E_ID == ID);
+            //var emp_details = hCL_DB_Context.Emp_db_set.FirstOrDefault(x => x.E_ID == ID);
+            var emp_details = await regionRepository.Get_emp_by_id_async(ID);
             if (emp_details == null)
             {
                 return NotFound($"THIS ID [{ID}] IS NOT AVAILABLE IN DATA BASE.");
             }
-             hCL_DB_Context.Emp_db_set.Remove(emp_details);
-            await hCL_DB_Context.SaveChangesAsync();
+
+            var emp = await regionRepository.Delete_an_emp_async(emp_details);
+            // hCL_DB_Context.Emp_db_set.Remove(emp_details);
+            //await hCL_DB_Context.SaveChangesAsync();
 
 
 //create automapper to convert domain model to dtos then pass this dtos
-            return Ok(emp_details);
+            return Ok(emp);
         }
 
 

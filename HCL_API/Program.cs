@@ -4,6 +4,7 @@
 
 
 using HCL_API.DB_CONTEXT;
+using HCL_API.REPOSITORIES;
 using Microsoft.EntityFrameworkCore;
 
 /* START_UP_CLASS */
@@ -22,6 +23,7 @@ builder.Services.AddDbContext<HCL_DB_Context>(options => options.UseSqlServer(bu
 /* 5.ADD Migrations */
 /* 6.ADD CONTROLLERS */
 
+builder.Services.AddScoped<IRegionRepository, Sql_Region_Repository>();
 
 
 

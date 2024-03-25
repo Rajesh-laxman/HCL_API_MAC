@@ -26,9 +26,11 @@
   <ItemGroup>
     <None Remove="MODEL\" />
     <None Remove="MODEL\DTO\" />
+    <None Remove="REPOSITORIES\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MODEL\" />
     <Folder Include="MODEL\DTO\" />
+    <Folder Include="REPOSITORIES\" />
   </ItemGroup>
 </Project>
