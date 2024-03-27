@@ -2,26 +2,36 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.HCL__API PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.ItemProperties.HCL__API PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="HCL_API/Program.cs">
     <Files>
-      <File FileName="HCL_API/Program.cs" Line="14" Column="35" />
-      <File FileName="HCL_API/appsettings.json" Line="15" Column="1" />
-      <File FileName="HCL_API/HCL_DB_Context.cs" Line="17" Column="1" />
-      <File FileName="HCL_API/MODEL/EMPLOYEE.cs" Line="1" Column="1" />
-      <File FileName="HCL_API/WeatherForecast.cs" Line="1" Column="1" />
+      <File FileName="HCL_API/Controllers/EMPLOYEEController.cs" Line="15" Column="30" />
+      <File FileName="HCL_API/MODEL/EMPLOYEE.cs" Line="18" Column="54" />
+      <File FileName="HCL_API/Program.cs" Line="44" Column="2" />
+      <File FileName="HCL_API/Properties/launchSettings.json" Line="12" Column="14" />
+      <File FileName="HCL_API/HCL_DB_Context.cs" Line="10" Column="44" />
+      <File FileName="HCL_API/Custom_middleware_1.cs" Line="15" Column="1" />
+      <File FileName="HCL_API/Controllers/ValuesController.cs" Line="35" Column="26" />
+      <File FileName="HCL_API/REPOSITORIES/IRegionRepository.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="HCL_API" expanded="True">
+          <Node name="HCL_API">
             <Node name="HCL_API">
               <Node name="Dependencies" expanded="True">
-                <Node name="FrameworkReferences" expanded="True" />
-                <Node name="PackageDependencies" expanded="True" />
+                <Node name="PackageDependencies" expanded="True">
+                  <Node name="Microsoft.EntityFrameworkCore.SqlServer" expanded="True" />
+                </Node>
               </Node>
-              <Node name="MODEL" expanded="True" />
+              <Node name="MAPPINGS" expanded="True" />
+              <Node name="Migrations" expanded="True" />
+              <Node name="MODEL" expanded="True">
+                <Node name="DTO" expanded="True" />
+              </Node>
+              <Node name="Properties" expanded="True" />
+              <Node name="REPOSITORIES" expanded="True" />
               <Node name="Program.cs" selected="True" />
             </Node>
           </Node>

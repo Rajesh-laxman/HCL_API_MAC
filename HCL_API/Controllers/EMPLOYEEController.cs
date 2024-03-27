@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 namespace HCL_API.Controllers
 {
     [Route("api/[Controller]")]
+    // [Route("api/[Controller]/[action]")] 
     [ApiController]
     public class EMPLOYEEController : ControllerBase
     {
@@ -63,7 +64,7 @@ namespace HCL_API.Controllers
             var emp_domain_detail =await  regionRepository.Get_emp_by_id_async(ID);
             if(emp_domain_detail == null)
             {
-                return NotFound($"THIS ID [{ID}] IS NOT AVAILABLE IN DATA BASE.");
+                return NotFound($"THIS ID [{ID}] IS NOT AVAILABLE IN DATA BASE.[select proper ID]");
             }
 
 
@@ -100,7 +101,7 @@ namespace HCL_API.Controllers
             // await hCL_DB_Context.Emp_db_set.AddAsync(eMPLOYEE);
             //await hCL_DB_Context.SaveChangesAsync();
             EMP_DTO eMP_DTO = mapper.Map<EMP_DTO>(emp);
-            return Ok(eMP_DTO);
+            return Created("URI",eMP_DTO);
         }
 
         [HttpPut]
