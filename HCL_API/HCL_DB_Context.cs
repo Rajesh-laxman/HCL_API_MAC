@@ -14,6 +14,7 @@ namespace HCL_API.DB_CONTEXT
         }
 
         public DbSet<EMPLOYEE> Emp_db_set { get; set; }
+        public DbSet<Book> books_table { get; set; }
     }
 }
 

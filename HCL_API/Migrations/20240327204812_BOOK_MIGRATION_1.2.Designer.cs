@@ -3,6 +3,7 @@ using HCL_API.DB_CONTEXT;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HCL_API.Migrations
 {
     [DbContext(typeof(HCL_DB_Context))]
-    partial class HCL_DB_ContextModelSnapshot : ModelSnapshot
+    [Migration("20240327204812_BOOK_MIGRATION_1.2")]
+    partial class BOOK_MIGRATION_12
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

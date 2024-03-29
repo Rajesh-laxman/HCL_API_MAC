@@ -29,6 +29,7 @@ builder.Services.AddScoped<IRegionRepository, Sql_Region_Repository>();
 //builder.Services.AddScoped<IRegionRepository, mango_db_repository>();
 builder.Services.AddAutoMapper(typeof(AUTO_MAPPER));
 builder.Services.AddTransient<Custom_middleware_1>();
+builder.Services.AddTransient<IBook_Interface, Book_Repository>();
 
 var app = builder.Build();   //insatance of this webapplication
 

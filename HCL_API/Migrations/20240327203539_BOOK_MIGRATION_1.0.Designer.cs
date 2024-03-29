@@ -3,6 +3,7 @@ using HCL_API.DB_CONTEXT;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HCL_API.Migrations
 {
     [DbContext(typeof(HCL_DB_Context))]
-    partial class HCL_DB_ContextModelSnapshot : ModelSnapshot
+    [Migration("20240327203539_BOOK_MIGRATION_1.0")]
+    partial class BOOK_MIGRATION_10
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,23 +23,6 @@ namespace HCL_API.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("HCL_API.MODEL.Book", b =>
-                {
-                    b.Property<int>("B_ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("B_ID"));
-
-                    b.Property<string>("B_Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("B_ID");
-
-                    b.ToTable("books_table");
-                });
 
             modelBuilder.Entity("HCL_API.MODEL.EMPLOYEE", b =>
                 {
